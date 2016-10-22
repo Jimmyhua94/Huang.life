@@ -1,0 +1,23 @@
+<header ng-controller="NavCtrl" uib-collapse="isNavCollapsed">
+    <a id="logo" title="Jimmy Huang" href="#/">
+        <span class="j">J</span>
+        <span class="h">H</span>
+    </a>
+    <button type="button" class="navbutton" ng-init="isNavCollapsed = true" ng-click="isNavCollapsed = !isNavCollapsed">
+        &#9776;
+    </button>
+    <nav>
+        <ul>
+            <li><a href="#/">Home</a></li>
+            <li><a href="#/about">About</a></li>
+            <li><a href="#/portfolio">Portfolio</a></li>
+            <li><a href="#/contact">Contact</a></li>
+            <li id="search">
+            <form ng-submit="changeView()">
+                <input class="input-menu" type="text" placeholder="Enter a menu item" ng-model="enteredPath" uib-typeahead="page for page in pages | filter:$viewValue" typeahead-show-hint="true" typeahead-min-length="0" />
+                <input class="input-button" type="submit" value="Go"/>
+            </form>
+            </li>
+        </ul>
+    </nav>
+</header>

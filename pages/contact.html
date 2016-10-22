@@ -1,0 +1,42 @@
+<div class="view full">
+    <div class="container">
+        <h1> This is a work in progress and doesn't actually send anything!</h1>
+        <p>(Getting Amazon Web Services(AWS) setup)</p>
+        <div class="panel">
+            <div class="panel-header">
+                <h2 class="panel-title">Contact Form</h2>
+            </div>
+            <div class="panel-body">
+                <form name="contact" method="post" novalidate>
+                    <div class="form-group">
+                        <label for="name">Name </label>
+                        <span class="error" ng-show="submitted && contact.name.$error.required">Required!</span>
+                        <input type="text" name="name" ng-model="formData.name" class="form-control" placeholder="Your Name" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <span class="error" ng-show="submitted && contact.email.$error.required">Required!</span>
+                        <span class="error" ng-show="submitted && contact.$error.email">Invalid email!</span>
+                        <input type="email" name="email" ng-model="formData.email" class="form-control" placeholder="Your Email" required />  
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject </label>
+                        <span class="error" ng-show="submitted && contact.subject.$error.required">Required!</span>
+                        <input type="text" name="subject" ng-model="formData.subject" class="form-control" placeholder="Subject" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <span class="error" ng-show="submitted && contact.message.$error.required">Required!</span>
+                        <textarea name="message" ng-model="formData.message" class="form-control" required></textarea>
+                    </div>
+
+                    <button class="btn btn-default" ng-click="submit(contact)" ng-disabled="submitButtonDisabled">Submit</button>
+                    </form>
+                <p ng-class="result">{{ resultMessage }}</p>
+            </div>
+        </div>
+    </div>
+</div>

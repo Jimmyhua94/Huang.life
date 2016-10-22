@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html lang="en-us" ng-app="huangLife">
+    <head>
+        <title>Jimmy Huang's Portfolio</title>
+        
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="Jimmy Huang's Portfolio" />
+        <meta name="author" content="Jimmy Huang" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="img/JH.png">
+        
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <noscript>
+            <meta http-equiv="refresh" content="0; url=#" />
+        </noscript>
+        <div ng-include='"templates/header.html"' ng-cloak></div>
+        <div ng-view ng-cloak></div>
+        <div ng-include='"templates/footer.html"' ng-cloak></div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.min.js"></script>
+        <script src="js/ui-bootstrap-edited-tpls-2.1.4.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
