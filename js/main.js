@@ -74,20 +74,30 @@ app.controller('ContactCtrl', function ($scope, $http) {
         $scope.submitted = true;
         $scope.submitButtonDisabled = true;
         if (form.$valid) {
+            var date = new Date();
+            var json = JSON.stringify({
+                name     : $scope.formData.name,
+                email    : $scope.formData.email,
+                subject  : $scope.formData.subject,
+                message  : $scope.formData.message,
+                month    : date.getMonth(),
+                day      : date.getDate(),
+                year     : date.getFullYear(),
+                date     : date.toDateString(),
+                time     : date.getHours() + ":" + date.getMinutes()
+            });
             $http({
                 method  : 'POST',
-                url     : 'contact-form.php',
-                data    : $.param($scope.formData),  //param method from jQuery
-                headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  //set the headers so angular passing info as form data (not request payload)
+                url     : '/',
+                data    : json
             }).then(function(data){
-                console.log(data);
-                if (data.success) { //success comes from the return json object
+                if (data.data.success) {
                     $scope.submitButtonDisabled = true;
-                    $scope.resultMessage = data.message;
+                    $scope.resultMessage = data.data.message;
                     $scope.result='success';
                 } else {
                     $scope.submitButtonDisabled = false;
-                    $scope.resultMessage = data.message;
+                    $scope.resultMessage = data.data.message;
                     $scope.result='error';
                 }
             });
