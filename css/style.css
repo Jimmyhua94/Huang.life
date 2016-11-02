@@ -419,10 +419,16 @@ textarea.form-control {
 
 .repo-title {
     display: block;
+    background-color: #0080FF;
     border-bottom: 1px solid #ccc;
 }
 
+.repo-body {
+    padding: 10px;
+}
+
 .repo-body p{
+    font-size: 12px;
     margin:auto 0;
 }
 
