@@ -1,8 +1,23 @@
 <div class="view full">
     <div class="container">
-        <h2> Portfolio </h2>
-        <p>Coming to a screen near you soon!</p>
+    <h2><a href="https://github.com/Jimmyhua94" class="title">GitHub</a> Repositories</h2>
+        <span ng-hide="gitData">Loading data from Github...</span>
         
-        <p>Here is my <a href="https://github.com/Jimmyhua94">GitHub</a></p>
+        <div ng-show="gitError">
+            <p>Failed to load GitHub repositories from GitHub API</p>
+            <p>Here is a direct link to my <a href="https://github.com/Jimmyhua94">GitHub</a></p>
+        </div>
+        <div class="repos">
+            <div ng-repeat="repo in gitData | filter:searchText  | orderBy:predicate:reverse" class="repo">
+                <div class="repo-title">
+                    <a href="{{repo.html_url}}" target="_blank" class="title">
+                        {{repo.name}}
+                    </a>
+                </div>
+                <div class="repo-body">
+                    <p>{{repo.description}}</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

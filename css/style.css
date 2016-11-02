@@ -225,6 +225,10 @@ header .navbutton {
 }
 
 /*  General */
+a.title {
+    text-decoration: none;
+}
+
 .name {
     font-family: "Arial Black", Gadget, sans-serif;
     font-size: 50px;
@@ -397,6 +401,36 @@ textarea.form-control {
     border-radius: 5px;
     background-color: red;
 }
+
+.repos {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.repo {
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 15px;
+    overflow: hidden;
+}
+
+.repo-title {
+    display: block;
+    border-bottom: 1px solid #ccc;
+}
+
+.repo-body p{
+    margin:auto 0;
+}
+
+.repo a {
+    text-decoration: none;
+}
+
+
 
 /*  Footer  */
 footer {

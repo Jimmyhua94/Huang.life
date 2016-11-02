@@ -5,7 +5,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when('/', {templateUrl: 'pages/home.html', controller: 'PageCtrl'})
     .when('/home', {templateUrl: 'pages/home.html', controller: 'PageCtrl'})
     .when('/about', {templateUrl: 'pages/about.html', controller: "PageCtrl"})
-    .when('/portfolio', {templateUrl: 'pages/portfolio.html', controller: 'PageCtrl'})
+    .when('/portfolio', {templateUrl: 'pages/portfolio.html', controller: 'PortfolioCtrl'})
     .when('/contact', {templateUrl: 'pages/contact.html', controller: 'ContactCtrl'})
     .otherwise({templateUrl: 'pages/404.html', controller: 'PageCtrl'});
 }]);
@@ -108,4 +108,16 @@ app.controller('ContactCtrl', function ($scope, $http) {
             $scope.result='error';
         }
     };
+});
+
+app.controller('PortfolioCtrl', function ($scope, $http) {
+    $scope.gitError = false;
+    
+    $http.get("https://api.github.com/users/Jimmyhua94/repos")
+    .success(function(data) {
+        $scope.gitData = data;
+    })
+    .error(function(){
+        $scope.gitError = true;
+    });
 });
