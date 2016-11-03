@@ -84,13 +84,13 @@ app.directive('skillProgress', function () {
             ctx.lineCap = 'round';
             ctx.strokeStyle = '#E5E5E5';
             ctx.stroke();
-            ctx.fillStyle='#E5E5E5';
-            ctx.fill();
             ctx.font = "bold 12px Arial";
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.fillStyle = '#000000';
-            ctx.fillText(scope.label, centerX, centerY);
+            ctx.fillText(scope.label, centerX, centerY-5);
+            ctx.fillStyle = '#BABABA';
+            ctx.fillText((scope.value/10)+"/10", centerX, centerY+15);
             ctx.beginPath();
             ctx.arc(centerX, centerY, radius, -(Math.PI/2), ((Math.PI * 2) * (scope.value/100)) - (Math.PI/2), false);
             ctx.lineWidth = 10;
