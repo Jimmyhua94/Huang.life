@@ -1,5 +1,12 @@
 <div class="view full">
     <div class="container">
+    <h2>Skills</h2>
+    <div class="panel">
+        <div ng-repeat="skill in skills | orderBy:'-value'" class="skill">
+            <canvas skill-progress label="{{skill.label}}" value="{{skill.value}}"></canvas>
+        </div>
+    </div>
+
     <h2><a href="https://github.com/Jimmyhua94" class="title">GitHub</a> Repositories</h2>
         <span ng-hide="gitData">Loading data from Github...</span>
         
@@ -7,7 +14,7 @@
             <p>Failed to load GitHub repositories from GitHub API</p>
             <p>Here is a direct link to my <a href="https://github.com/Jimmyhua94">GitHub</a></p>
         </div>
-        <div class="repos">
+        <div class="panel">
             <div ng-repeat="repo in gitData | filter:searchText  | orderBy:predicate:reverse" class="repo">
                 <div class="repo-title">
                     <a href="{{repo.html_url}}" target="_blank" class="title">

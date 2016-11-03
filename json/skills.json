@@ -1,0 +1,33 @@
+{
+	"skills": [{
+		"label": "Java",
+		"value": "75"
+	}, {
+		"label": "C",
+		"value": "75"
+	}, {
+		"label": "C++",
+		"value": "75"
+	}, {
+		"label": "Python",
+		"value": "50"
+	}, {
+		"label": "JavaScript",
+		"value": "65"
+	}, {
+		"label": "SQL",
+		"value": "50"
+	}, {
+		"label": "AngularJS",
+		"value": "50"
+	}, {
+		"label": "NodeJS",
+		"value": "35"
+	}, {
+		"label": "HTML",
+		"value": "75"
+	}, {
+		"label": "CSS",
+		"value": "75"
+	}]
+}

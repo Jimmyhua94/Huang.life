@@ -402,11 +402,6 @@ textarea.form-control {
     background-color: red;
 }
 
-.repos {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
 .repo {
     display: inline-block;
     width: 200px;
@@ -434,6 +429,10 @@ textarea.form-control {
 
 .repo a {
     text-decoration: none;
+}
+
+.skill {
+    display: inline-block;
 }
 
 

@@ -52,6 +52,56 @@ app.directive('myImg', function ($window) {
     };
 });
 
+app.directive('skillProgress', function () {
+    'use strict';
+    
+    return {
+        restrict: 'A',
+        scope: {
+            label: '@',
+            value: '@'
+        },
+        link: function(scope, element) {
+            var radius = element.attr('radius') || 40;
+            var centerX = 50;
+            if(element.attr('width')){
+                centerX = element.attr('width')/2;
+            }
+            else{
+                element.attr('width',100);
+            }
+            var centerY = 50;
+            if(element.attr('height')){
+                centerY = element.attr('height')/2;
+            }
+            else{
+                element.attr('height',100);
+            }
+            var ctx = element.get(0).getContext('2d');
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, Math.PI * 2, false);
+            ctx.lineWidth = 10;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = '#E5E5E5';
+            ctx.stroke();
+            ctx.fillStyle='#E5E5E5';
+            ctx.fill();
+            ctx.font = "bold 12px Arial";
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillStyle = '#000000';
+            ctx.fillText(scope.label, centerX, centerY);
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, -(Math.PI/2), ((Math.PI * 2) * (scope.value/100)) - (Math.PI/2), false);
+            ctx.lineWidth = 10;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = '#32CD32';
+            ctx.stroke();
+        }
+    };
+});
+
+
 app.controller('PageCtrl', function ($scope, $location) {
     $scope.page = $location.path();
 });
@@ -111,6 +161,12 @@ app.controller('ContactCtrl', function ($scope, $http) {
 });
 
 app.controller('PortfolioCtrl', function ($scope, $http) {
+    $http.get('./json/skills.json')
+    .success(function(data) {
+        $scope.skills = data.skills;
+        console.log($scope.skills);
+    });
+    
     $scope.gitError = false;
     
     $http.get("https://api.github.com/users/Jimmyhua94/repos")
