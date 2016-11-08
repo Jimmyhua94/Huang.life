@@ -405,7 +405,7 @@ textarea.form-control {
 .repo {
     display: inline-block;
     width: 200px;
-    height: 100px;
+    height: 125px;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin: 15px;
@@ -414,21 +414,34 @@ textarea.form-control {
 
 .repo-title {
     display: block;
+    height: 20px;
     background-color: #0080FF;
     border-bottom: 1px solid #ccc;
 }
 
 .repo-body {
+    height: 85px;
     padding: 10px;
 }
 
 .repo-body p{
+    margin: 0;
     font-size: 12px;
-    margin:auto 0;
 }
 
 .repo a {
     text-decoration: none;
+}
+
+.repo-footer {
+    display: block;
+    height: 20px;
+    border-top: 1px solid #ccc;
+}
+
+.repo-footer p{
+    font-size: 12px;
+    margin: 0;
 }
 
 .skill {

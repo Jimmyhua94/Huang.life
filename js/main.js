@@ -23,7 +23,7 @@ app.directive('myImg', function ($window) {
             var expanded = false,
                 temp = element.clone();
             element.bind('click', function () {
-                if(expanded && width > 768){
+                if(expanded && width > 768) {
                     temp.remove();
                     expanded = false;
                 }
@@ -64,14 +64,14 @@ app.directive('skillProgress', function () {
         link: function(scope, element) {
             var radius = element.attr('radius') || 40;
             var centerX = 50;
-            if(element.attr('width')){
+            if(element.attr('width')) {
                 centerX = element.attr('width')/2;
             }
             else{
                 element.attr('width',100);
             }
             var centerY = 50;
-            if(element.attr('height')){
+            if(element.attr('height')) {
                 centerY = element.attr('height')/2;
             }
             else{
@@ -101,6 +101,34 @@ app.directive('skillProgress', function () {
     };
 });
 
+app.directive('gitRepos', function ($http) {
+    'use strict';
+    
+    return {
+        restrict: 'A',
+        scope: {
+            languageurl: '@',
+            language: '@'
+        },
+        link: function(scope, element) {
+          $http.get(scope.languageurl)
+          .success(function(data) {
+            var languages = [];
+              angular.forEach(data, function(value,key) {
+                if(value > 5000) {
+                  languages.push(key);
+                }
+              });
+              if(languages.length == 0 || languages.length > 4) {
+                element.append("<p>"+scope.language+"</p>");
+              }
+              else {
+                element.append("<p>"+languages+"</p>");
+              }
+          })
+        }
+    };
+});
 
 app.controller('PageCtrl', function ($scope, $location) {
     $scope.page = $location.path();
@@ -140,7 +168,7 @@ app.controller('ContactCtrl', function ($scope, $http) {
                 method  : 'POST',
                 url     : '/',
                 data    : json
-            }).then(function(data){
+            }).then(function(data) {
                 if (data.data.success) {
                     $scope.submitButtonDisabled = true;
                     $scope.resultMessage = data.data.message;
@@ -164,7 +192,6 @@ app.controller('PortfolioCtrl', function ($scope, $http) {
     $http.get('./json/skills.json')
     .success(function(data) {
         $scope.skills = data.skills;
-        console.log($scope.skills);
     });
     
     $scope.gitError = false;
@@ -173,7 +200,7 @@ app.controller('PortfolioCtrl', function ($scope, $http) {
     .success(function(data) {
         $scope.gitData = data;
     })
-    .error(function(){
+    .error(function() {
         $scope.gitError = true;
     });
 });
